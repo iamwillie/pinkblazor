@@ -1,0 +1,17 @@
+﻿@inherits LayoutComponentBase
+
+<NavMenu>
+    <NavMenuItem Href="/" MenuTitle="Home" />
+    <NavMenuItem Href="/about" MenuTitle="About" />
+    <NavMenuItem Href="/contact" MenuTitle="Contact" />
+    <NavMenuDropdownItem MenuTitle="Dropdown">
+        <NavMenuItem IsDropDownItem Href="/dd1" MenuTitle="Menu Item 1" />
+        <NavMenuItem IsDropDownItem Href="/dd2" MenuTitle="Menu Item 2" />
+        <NavMenuItem IsDropDownItem Href="/dd3" MenuTitle="Menu Item 3" />
+    </NavMenuDropdownItem>
+</NavMenu>
+
+<Main>
+    <br/>
+    @Body
+</Main>

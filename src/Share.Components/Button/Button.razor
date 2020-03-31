@@ -1,0 +1,36 @@
+﻿@namespace Share.Components
+@inherits Component
+
+@switch (ButtonType)
+{
+    case ButtonType.Button:
+        {
+            if (!Hide)
+            {
+                <button type="button" id="@Id" onclick="@OnClick" role="button" class="btn @SizeClass @Color-button" disabled="@Disabled">
+                    @Text
+                </button>
+            }
+            break;
+        }
+    case ButtonType.Reset:
+        {
+            if (!Hide)
+            {
+                <button type="reset" id="@Id" onclick="@OnClick" role="button" class="btn @Color-button" disabled="@Disabled">
+                    @Text
+                </button>
+            }
+            break;
+        }
+    case ButtonType.Submit:
+        {
+            if (!Hide)
+            {
+                <button type="submit" id="@Id" onclick="@OnClick" role="button" class="btn @Color-button" disabled="@Disabled">
+                    @Text
+                </button>
+            }
+            break;
+        }
+}

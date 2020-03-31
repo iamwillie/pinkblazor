@@ -1,0 +1,69 @@
+﻿@page "/buttons"
+
+<h1>Buttons</h1>
+<hr />
+<br />
+<div class="form-check">
+    <input type="checkbox" class="form-check-input" id="disabled" @bind="_disabled">
+    <label class="form-check-label" for="disabled">Disabled</label>
+</div>
+<div class="form-check">
+    <input type="checkbox" class="form-check-input" id="hide" @bind="_hide">
+    <label class="form-check-label" for="hide">Hide</label>
+</div>
+
+<br />
+
+<Button Id="large-button"
+        Color="primary"
+        ButtonType="ButtonType.Button"
+        ButtonSize="Size.Large"
+        OnClick="OnTestLarge"
+        Disabled="_disabled"
+        Hide="_hide"
+        Text="Large Button" />
+
+
+<Button Id="default-button"
+        Color="primary"
+        ButtonType="ButtonType.Button"
+        OnClick="OnTestDefault"
+        Disabled="_disabled"
+        Hide="_hide"
+        Text="Default Button" />
+
+
+<Button Id="large-button"
+        Color="primary"
+        ButtonType="ButtonType.Button"
+        ButtonSize="Size.Small"
+        OnClick="OnTestSmall"
+        Disabled="_disabled"
+        Hide="_hide"
+        Text="Small Button" />
+<hr />
+<h5>@_message</h5>
+
+@code{
+    private string _message;
+    private bool _disabled;
+    private bool _hide;
+
+    public void OnTestLarge()
+    {
+        _message = "Well hello there, thank you for clicking the LARGE BUTTON!";
+        Console.WriteLine(_message);
+    }
+
+    public void OnTestDefault()
+    {
+        _message = "Well hello there, thank you for clicking the default button!";
+        Console.WriteLine(_message);
+    }
+
+    public void OnTestSmall()
+    {
+        _message = "Well hello there, thank you for clicking the small button!";
+        Console.WriteLine(_message);
+    }
+}

@@ -1,0 +1,17 @@
+﻿@namespace Share.Components
+@inherits Component
+
+@if (!IsDropDownItem)
+{
+    <li class="nav-item">
+        <a class="nav-link" href="@Href">
+            @MenuTitle
+        </a>
+    </li>
+}
+else
+{
+    <a class="dropdown-item" href="@Href">
+        @MenuTitle
+    </a>
+}

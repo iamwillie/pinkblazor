@@ -1,0 +1,14 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/main.css",
+    "inputFile": "Styles/sass/main.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/mdb.css",
+    "inputFile": "Styles/mdb.scss"
+  },
+  {
+    "outputFile": "Styles/sass/stepper.css",
+    "inputFile": "Styles/sass/stepper.scss"
+  }
+]

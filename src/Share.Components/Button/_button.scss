@@ -1,0 +1,195 @@
+﻿
+/*PRIMARY*/
+.primary-button {
+    background-color: $primary-color;
+    color: white;
+}
+
+.primary-button:hover {
+    background-color: $primary-color-hover;
+    color: white;
+}
+
+.primary-button-outline {
+    border: 1.5pt solid $primary-color;
+    color: $primary-color;
+}
+
+.primary-button-outline:hover {
+    background-color: $primary-color;
+    color: $primary-color;
+}
+/*PRIMARY*/
+
+
+/*SECONDARY*/
+.secondary-button {
+    background-color: $secondary-color;
+    color: white;
+}
+
+.secondary-button:hover {
+    background-color: $secondary-color-hover;
+    color: white;
+}
+
+.secondary-button-outline {
+    border: 1.5pt solid $secondary-color;
+    color: $secondary-color;
+}
+
+.secondary-button-outline:hover {
+    background-color: $secondary-color;
+    color: $secondary-color;
+}
+/*SECONDARY*/
+
+
+/*SUCCESS*/
+.success-button {
+    background-color: $success-color;
+    color: white;
+}
+
+.success-button:hover {
+    background-color: $success-color-hover;
+    color: white;
+}
+
+.success-button-outline {
+    border: 1.5pt solid $success-color;
+    color: $success-color;
+}
+
+.success-button-outline:hover {
+    background-color: $success-color;
+    color: $success-color;
+}
+/*SUCCESS*/
+
+
+/*WARNING*/
+.warning-button {
+    background-color: $warning-color;
+    color: white;
+}
+
+.warning-button:hover {
+    background-color: $warning-color-hover;
+    color: white;
+}
+
+.warning-button-outline {
+    border: 1.5pt solid $warning-color;
+    color: $warning-color;
+}
+
+.warning-button-outline:hover {
+    background-color: $warning-color;
+    color: $warning-color;
+}
+/*WARNING*/
+
+
+/*DANGER*/
+.danger-button {
+    background-color: $danger-color;
+    color: white;
+}
+
+.danger-button:hover {
+    background-color: $danger-color-hover;
+    color: white;
+}
+
+.danger-button-outline {
+    border: 1.5pt solid $danger-color;
+    color: $danger-color;
+}
+
+.danger-button-outline:hover {
+    background-color: $danger-color;
+    color: $danger-color;
+}
+/*DANGER*/
+
+
+/*INFO*/
+.info-button {
+    background-color: $info-color;
+    color: white;
+}
+
+.info-button:hover {
+    background-color: $info-color-hover;
+    color: white;
+}
+
+.info-button-outline {
+    border: 1.5pt solid $info-color;
+    color: $info-color;
+}
+
+.info-button-outline:hover {
+    background-color: $info-color;
+    color: $info-color;
+}
+/*INFO*/
+
+
+/*LIGHT*/
+.light-button {
+    background-color: $grey-color;
+    color: $primary-color;
+}
+
+.light-button:hover {
+    background-color: $grey-color-hover;
+    color: $primary-color;
+}
+
+.light-button-outline {
+    border: 1.5pt solid $grey-color;
+    color: $grey-color;
+}
+
+.light-button-outline:hover {
+    background-color: $grey-color;
+    color: $grey-color;
+}
+/*LIGHT*/
+
+
+/*DARK*/
+.dark-button {
+    background-color: $dark-grey-color;
+    color: white;
+}
+
+.dark-button:hover {
+    background-color: $dark-grey-color-hover;
+    color: white;
+}
+
+.dark-button-outline {
+    border: 1.5pt solid $primary-color;
+    color: $primary-color;
+}
+
+.dark-button-outline:hover {
+    background-color: $primary-color;
+    color: $primary-color;
+}
+/*DARK*/
+
+
+/*LINK*/
+.btn-link {
+    color: $primary-color !important;
+}
+
+.btn-link:hover {
+    color: $primary-color !important;
+}
+/*LINK*/
+
