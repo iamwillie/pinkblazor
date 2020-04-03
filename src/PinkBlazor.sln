@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PinkBlazor", "PinkBlazor\PinkBlazor.csproj", "{ED31520F-2CB4-496B-8684-6E6B7D4D8107}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Share.Components", "Share.Components\Share.Components.csproj", "{94D8C67F-4BA5-41C9-8C15-C4155645560B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PinkBlazor.Components", "Share.Components\PinkBlazor.Components.csproj", "{94D8C67F-4BA5-41C9-8C15-C4155645560B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Share.Core", "Share.Core\Share.Core.csproj", "{2C5708C6-A59A-4C06-A21B-36A752DAD226}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Share.Core", "Share.Core\Share.Core.csproj", "{2C5708C6-A59A-4C06-A21B-36A752DAD226}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

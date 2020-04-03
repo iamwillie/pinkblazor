@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Share.Components\Share.Components.csproj" />
+    <ProjectReference Include="..\Share.Components\PinkBlazor.Components.csproj" />
   </ItemGroup>
 
 </Project>

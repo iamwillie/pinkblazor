@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace Share.Components
+namespace PinkBlazor
 {
     public partial class Main : Component
     {

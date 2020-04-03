@@ -1,0 +1,46 @@
+﻿@using System.IO
+
+@page "/singlefile"
+
+<p>A single file input that uploads automatically on file selection</p>
+
+<File OnChange="HandleSelection">Input File</File>
+
+@if (!string.IsNullOrEmpty(status))
+{
+    <div class="file-row">
+        <!-- File info -->
+        <div>
+            <p>@status</p>
+        </div>
+    </div>
+}
+
+@code{
+    string status;
+
+    async Task HandleSelection(IFileListEntry[] files)
+    {
+        var file = files.FirstOrDefault();
+
+        if (file != null)
+        {
+            try
+            {
+                // So the UI updates to show progress
+                file.OnDataRead += (sender, eventArgs) => InvokeAsync(StateHasChanged);
+
+                // Just load into .NET memory to show it can be done
+                // Alternatively it could be saved to disk, or parsed in memory, or similar
+                var ms = new MemoryStream();
+                await file.Data.CopyToAsync(ms);
+
+                status = $"Finished loading {file.Size} bytes from {file.Name}";
+            }
+            catch (Exception ex)
+            {
+                status = ex.ToString();
+            }
+        }
+    }
+}

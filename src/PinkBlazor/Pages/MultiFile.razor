@@ -1,0 +1,59 @@
+﻿@using System.IO
+
+@page "/multifile"
+
+<p>A multiple file input that uploads automatically on file selection</p>
+
+<File Id="Model.File" OnChange="HandleSelection" multiple>Input File</File>
+
+@if (selectedFiles != null)
+{
+    foreach (var file in selectedFiles)
+    {
+        var buttonText = string.Empty;
+        var isLoading = file.Data.Position > 0;
+
+        <div class="file-row">
+            <!-- File info -->
+            <div>
+                <h2>@file.Name</h2>
+                Size: <strong>@file.Size bytes</strong>;
+                Last modified: <strong>@file.LastModified.ToShortDateString()</strong>;
+                Type: <strong>@file.Type</strong>
+            </div>
+
+
+            @if (!isLoading)
+            {
+                buttonText = "Load";
+            }
+            else
+            {
+                buttonText = $"Loaded {(100.0 * file.Data.Position / file.Size).ToString("0")}%";
+            }
+
+            <Button OnClick="() => LoadFile(file)" Disabled="@isLoading" Text="@buttonText" />
+        </div>
+    }
+}
+
+
+@code {
+    IFileListEntry[] selectedFiles;
+
+    void HandleSelection(IFileListEntry[] files)
+    {
+        selectedFiles = files;
+    }
+
+    async Task LoadFile(IFileListEntry file)
+    {
+        // So the UI updates to show progress
+        file.OnDataRead += (sender, eventArgs) => InvokeAsync(StateHasChanged);
+
+        // Just load into .NET memory to show it can be done
+        // Alternatively it could be saved to disk, or parsed in memory, or similar
+        var ms = new MemoryStream();
+        await file.Data.CopyToAsync(ms);
+    }
+}
