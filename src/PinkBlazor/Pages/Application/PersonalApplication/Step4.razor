@@ -1,0 +1,72 @@
+﻿@page "/application/affordability"
+
+<ApplicationProcess @ref="ApplicationProcess">
+    <div class="container">
+        <h1>Step 4</h1>
+        <hr />
+        <Button OnClick="MarkAsActive" Text="Mark As Active" />
+        <Button OnClick="MarkAsCompleted" Text="Mark As Completed" />
+        <Button OnClick="MarkAsFailed" Text="Mark As Failed" />
+        <Button OnClick="MarkAsLocked" Text="Mark As Locked" />
+        <hr />
+        <div class="text-right">
+            <Button Color="secondary" ButtonType="ButtonType.Button" Text="Cancel" />
+            <Button ButtonType="ButtonType.Submit"
+                    Text="@(AppState.CurrentStep.State == ApplicationState.Failed ? "Finish" : "Next")"
+                    OnClick="Next"
+                    Disabled="@_disabled" />
+        </div>
+    </div>
+</ApplicationProcess>
+
+@code{
+    private bool _disabled;
+
+    public ApplicationProcess ApplicationProcess { get; set; }
+
+    [CascadingParameter(Name = "Application")]
+    protected Application Application { get; set; }
+
+    [Inject]
+    public NavigationManager NavManager { get; set; }
+
+    [Inject]
+    public AppState AppState { get; set; }
+
+    private void Next()
+    {
+        AppState.Application.Approved = true;
+        if (AppState.CurrentStep.State == ApplicationState.Completed ||
+            AppState.CurrentStep.State == ApplicationState.Failed ||
+            AppState.CurrentStep.State == ApplicationState.Locked)
+        {
+            var nextStep = AppState.Next();
+            NavManager.NavigateTo(nextStep.StepUrl);
+        }
+        else
+        {
+            AppState.Message = "Please complete the step before moving forward with the application.";
+        }
+    }
+
+    protected void MarkAsActive()
+    {
+        AppState.CurrentStep.State = ApplicationState.Current;
+    }
+
+    protected void MarkAsCompleted()
+    {
+        AppState.CurrentStep.State = ApplicationState.Completed;
+    }
+
+    protected void MarkAsFailed()
+    {
+        AppState.CurrentStep.State = ApplicationState.Failed;
+        AppState.Application.Failed = true;
+    }
+
+    protected void MarkAsLocked()
+    {
+        AppState.CurrentStep.State = ApplicationState.Locked;
+    }
+}

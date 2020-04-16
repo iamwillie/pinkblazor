@@ -1,0 +1,159 @@
+﻿@namespace PinkBlazor
+
+<div class="card">
+    <div class="card-body">
+        <h1>Inocome</h1>
+        <hr />
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var income in Model.IncomeItems)
+                {
+                    <tr>
+                        <td>@income.Description</td>
+                        <td>@income.Amount</td>
+                        <td>
+                            <Button OnClick="@(() => RemoveIncome(income))"
+                                    ButtonSize="Size.Small"
+                                    Rounded
+                                    Icon="minus" />
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td>
+                        <!-- Material input -->
+                        <div class="md-form">
+                            <input type="text" id="input-description" class="form-control" @bind="_incomeModel.Description">
+                            <label for="input-description">Description</label>
+                        </div>
+                    </td>
+                    <td>
+                        <!-- Material input -->
+                        <div class="md-form">
+                            <input type="text" id="input-amount" class="form-control" @bind="_incomeModel.Amount">
+                            <label for="input-amount">Amount</label>
+                        </div>
+                    </td>
+                    <td>
+                        <Button OnClick="@(() => AddIncome(_incomeModel))"
+                                ButtonSize="Size.Small"
+                                Rounded
+                                Icon="plus" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>TOTAL:</b></td>
+                    <td>@Model.IncomeItems.Sum(e => e.Amount)</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<br/><br/>
+
+<div class="card">
+    <div class="card-body">
+        <h1>Expenses</h1>
+        <hr />
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var expense in Model.ExpenseItems)
+                {
+                    <tr>
+                        <td>@expense.Description</td>
+                        <td>@expense.Amount</td>
+                        <td>
+                            <Button OnClick="@(() => RemoveExpense(expense))"
+                                    ButtonSize="Size.Small"
+                                    Rounded
+                                    Icon="minus" />
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td>
+                        <!-- Material input -->
+                        <div class="md-form">
+                            <input type="text" id="expense-description" class="form-control" @bind="_expenseModel.Description">
+                            <label for="expense-description">Description</label>
+                        </div>
+                    </td>
+                    <td>
+                        <!-- Material input -->
+                        <div class="md-form">
+                            <input type="text" id="expense-amount" class="form-control" @bind="_expenseModel.Amount">
+                            <label for="expense-amount">Amount</label>
+                        </div>
+                    </td>
+                    <td>
+                        <Button OnClick="@(() => AddExpense(_expenseModel))"
+                                ButtonSize="Size.Small"
+                                Rounded
+                                Icon="minus" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>TOTAL:</b></td>
+                    <td>@Model.ExpenseItems.Sum(e => e.Amount)</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+@code{
+    public AffordabilityModal Model { get; set; }
+    private Income _incomeModel { get; set; }
+    private Expense _expenseModel { get; set; }
+
+    public void AddIncome(Income income)
+    {
+        Model.IncomeItems.Add(income);
+    }
+
+    public void RemoveIncome(Income income)
+    {
+        Model.IncomeItems.Remove(income);
+    }
+
+    public void AddExpense(Expense expense)
+    {
+        Model.ExpenseItems.Add(expense);
+    }
+
+    public void RemoveExpense(Expense expense)
+    {
+        Model.ExpenseItems.Remove(expense);
+    }
+
+    protected override void OnInitialized()
+    {
+        Model = new AffordabilityModal()
+        {
+            IncomeItems = new List<Income>(),
+            ExpenseItems = new List<Expense>()
+        };
+
+        _incomeModel = new Income();
+        _expenseModel = new Expense();
+    }
+}

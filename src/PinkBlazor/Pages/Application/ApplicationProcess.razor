@@ -1,0 +1,120 @@
+﻿@namespace PinkBlazor
+
+<div class="row">
+    <div class="col-md-2">
+        <div class="vertical-menu">
+            @foreach (var item in AppState.Application.Steps)
+            {
+                if (item.State == ApplicationState.Current ||
+                    item.State == ApplicationState.Completed)
+                {
+                    <a @onclick="@(() => SetAsActive(item.StepId))"
+                       class="@(item.IsActiveStep ? "active" : "")">
+
+                        <span><b>@item.StepNumber</b></span>
+                        <span><b>@item.StepTitle</b></span>&nbsp;
+                        <span>
+                            @switch (item.State)
+                            {
+                                case ApplicationState.Completed:
+                                    {
+                                        <i class="fas fa-check"></i>
+                                        break;
+                                    }
+                                case ApplicationState.Failed:
+                                    {
+                                        <i class="fas fa-times"></i>
+                                        break;
+                                    }
+                                case ApplicationState.Locked:
+                                    {
+                                        <i class="fas fa-lock"></i>
+                                        break;
+                                    }
+                                default:
+                                    {
+                                        <i class="fas fa-edit"></i>
+                                        break;
+                                    }
+                            }
+                        </span>
+                    </a>
+                }
+                else
+                {
+                    <div class="disabledStepItem">
+                        <span><b>@item.StepNumber</b></span>
+                        <span>@item.StepTitle</span>&nbsp;
+                        <span>
+                            @switch (item.State)
+                            {
+                                case ApplicationState.Completed:
+                                    {
+                                        <i class="fas fa-check"></i>
+                                        break;
+                                    }
+                                case ApplicationState.Failed:
+                                    {
+                                        <i class="fas fa-times"></i>
+                                        break;
+                                    }
+                                case ApplicationState.Locked:
+                                    {
+                                        <i class="fas fa-lock"></i>
+                                        break;
+                                    }
+                                default: { break; }
+                            }
+                        </span>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    <div class="col-md-10">
+        <p>
+            <b>Step @AppState.CurrentStep.StepNumber</b> is currently
+            <b>@AppState.CurrentStep.State.ToString()</b>
+        </p>
+        <p>@AppState.Message</p>
+        @ChildContent
+    </div>
+</div>
+
+@code{
+
+    [Inject]
+    public AppState AppState { get; set; }
+
+    [Inject]
+    public NavigationManager NavManager { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    public void UpdateState()
+    {
+        this.StateHasChanged();
+    }
+
+    public void SetAsActive(int stepId)
+    {
+        AppState.Application.Steps[AppState.CurrentStep.StepId].IsActiveStep = false;
+
+        var step = AppState.Application.Steps.Where(s => s.StepId == stepId).FirstOrDefault();
+        AppState.UpdateStepProgress(step);
+        NavManager.NavigateTo(step.StepUrl);
+        this.StateHasChanged();
+    }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+    }
+}
+

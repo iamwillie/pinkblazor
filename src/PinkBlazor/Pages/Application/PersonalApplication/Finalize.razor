@@ -1,0 +1,20 @@
+﻿@page "/application/finalize"
+@inject AppState AppState
+
+    <ApplicationProcess @ref="ApplicationProcess">
+        
+        @if (AppState.Application.Approved)
+        {
+            <h1>Application Approved</h1>
+        }
+
+        @if (AppState.Application.Failed)
+        {
+            <h1>Application Failed</h1>
+        }
+
+    </ApplicationProcess>
+
+@code{
+    public ApplicationProcess ApplicationProcess { get; set; }
+}

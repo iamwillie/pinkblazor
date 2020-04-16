@@ -1,8 +1,31 @@
-﻿
-@page "/"
+﻿@page "/"
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+<br />
+<br />
+<a href="/buttons" class="btn primary-button">Buttons</a>
+<a href="/application/new" class="btn primary-button">New Application</a>
+<Button OnClick="ShowAddordability" Text="Show Affordability" />
 
-<a href="/buttons" class="btn primary-button" >Buttons</a>
+@if (_showAffordability)
+{
+    <Button OnClick="HideAddordability" Text="Hide Affordability" />
+    <MyAffordability />
+}
+
+
+@code{
+    private bool _showAffordability = false;
+
+    public void ShowAddordability()
+    {
+        _showAffordability = true;
+    }
+
+    public void HideAddordability()
+    {
+        _showAffordability = false;
+    }
+}

@@ -12,11 +12,13 @@ namespace PinkBlazor
         [Parameter] public string Color { get; set; }
         [Parameter] public bool Disabled { get; set; }
         [Parameter] public bool Hide { get; set; }
+        [Parameter] public bool Rounded { get; set; }
         [Parameter] public Size ButtonSize { get; set; }
         [Parameter] public string SizeClass { get; set; }
         [Parameter] public ButtonType ButtonType { get; set; }
         [Parameter] public EventCallback OnClick { get; set; }
         [Parameter] public string Text { get; set; }
+        [Parameter] public string Icon { get; set; }
 
         #endregion
 

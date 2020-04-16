@@ -7,7 +7,16 @@
         {
             if (!Hide)
             {
-                <button type="button" id="@Id" onclick="@OnClick" role="button" class="btn @SizeClass @Color-button" disabled="@Disabled">
+                <button type="button"
+                        id="@Id"
+                        onclick="@OnClick"
+                        role="button"
+                        class="btn @(Rounded ? "btn-rounded" : "") @SizeClass @Color-button"
+                        disabled="@Disabled">
+                    @if (!string.IsNullOrEmpty(Icon))
+                    {
+                        <i class="fas fa-@Icon"></i>
+                    }
                     @Text
                 </button>
             }
@@ -17,7 +26,16 @@
         {
             if (!Hide)
             {
-                <button type="reset" id="@Id" onclick="@OnClick" role="button" class="btn @Color-button" disabled="@Disabled">
+                <button type="reset"
+                        id="@Id"
+                        onclick="@OnClick"
+                        role="button"
+                        class="btn @(Rounded ? "btn-rounded" : "") @Color-button"
+                        disabled="@Disabled">
+                    @if (!string.IsNullOrEmpty(Icon))
+                    {
+                        <i class="fas fa-@Icon"></i>
+                    }
                     @Text
                 </button>
             }
@@ -27,7 +45,16 @@
         {
             if (!Hide)
             {
-                <button type="submit" id="@Id" onclick="@OnClick" role="button" class="btn @Color-button" disabled="@Disabled">
+                <button type="submit"
+                        id="@Id"
+                        onclick="@OnClick"
+                        role="button"
+                        class="btn @(Rounded ? "btn-rounded" : "") @Color-button"
+                        disabled="@Disabled">
+                    @if (!string.IsNullOrEmpty(Icon))
+                    {
+                        <i class="fas fa-@Icon"></i>
+                    }
                     @Text
                 </button>
             }

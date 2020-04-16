@@ -1,0 +1,15 @@
+﻿@page "/application/new"
+@inject NavigationManager NavManager
+@inject AppState AppState
+
+<Button ButtonType="ButtonType.Submit"
+        Text="Start Application"
+        OnClick="StartApplication" />
+
+@code{
+    public void StartApplication()
+    {
+        AppState.NewApplication();
+        NavManager.NavigateTo("/application/personal");
+    }
+}
